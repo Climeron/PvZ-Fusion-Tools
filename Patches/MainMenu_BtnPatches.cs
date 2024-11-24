@@ -13,8 +13,8 @@ namespace ClimeronToolsForPvZ.Patches
         {
             switch (__instance.buttonNumber)
             {
-                case int n when n >= 0 && n <= 3:
-                case 5:
+                case int n when n >= 0 && n <= 6:
+                case 11:
                     LoadedModsCanvasManager.DestroyCanvas();
                     break;
             }
