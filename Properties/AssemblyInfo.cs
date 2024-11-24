@@ -34,15 +34,15 @@ using MelonLoader;
 // Можно задать все значения или принять номера сборки и редакции по умолчанию 
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion(ClimeronToolsForPvZ.AssemblyInfo.VERSION)]
+[assembly: AssemblyFileVersion(ClimeronToolsForPvZ.AssemblyInfo.VERSION)]
 
 namespace ClimeronToolsForPvZ
 {
     public static class AssemblyInfo
     {
         public const string MODE_NAME = nameof(ClimeronToolsForPvZ);
-        public const string VERSION = "213.0.0";
+        public const string VERSION = "214.0.0";
         public const string AUTHOR = "Climeron";
     }
 }
