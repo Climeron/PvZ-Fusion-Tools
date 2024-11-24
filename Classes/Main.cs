@@ -1,4 +1,8 @@
-﻿using ClimeronToolsForPvZ.Components;
+﻿using System;
+using System.Text;
+using ClimeronToolsForPvZ.Classes;
+using ClimeronToolsForPvZ.Classes.AssetsManagement;
+using ClimeronToolsForPvZ.Components;
 using Il2CppInterop.Runtime.Injection;
 using MelonLoader;
 using UnityEngine;
@@ -7,7 +11,9 @@ namespace ClimeronToolsForPvZ
 {
     public class Main : MelonMod
     {
-        private static readonly bool _debug = false;
+        public static Main Instance { get; private set; }
+        public Settings Settings { get; private set; }
+        private readonly bool _debug;
 
         public override void OnGUI()
         {
@@ -27,10 +33,19 @@ namespace ClimeronToolsForPvZ
         }
         public override void OnInitializeMelon()
         {
+            Console.OutputEncoding = Encoding.UTF8;
             RegisterComponents();
+            Instance = this;
+            ModAssetsManager.Initialize();
+            Settings = Settings.Load();
+            ModAssetsManager.LoadAssets(Settings);
+            UnityExplorerIntegration.Initialize();
+            MouseBlocker.Initialize();
         }
-        private static void RegisterComponents()
+        private void RegisterComponents()
         {
+            ClassInjector.RegisterTypeInIl2Cpp<Settings>();
+            ClassInjector.RegisterTypeInIl2Cpp<MouseBlocker>();
             ClassInjector.RegisterTypeInIl2Cpp<ShadowedTextSupporter>();
         }
     }

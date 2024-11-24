@@ -57,6 +57,15 @@ namespace ClimeronToolsForPvZ.Components
                 ShadowText.alignment = value;
             }
         }
+        public TMP_FontAsset Font
+        {
+            get => NormalText.font;
+            set
+            {
+                NormalText.font = value;
+                ShadowText.font = value;
+            }
+        }
         public FontStyles FontStyle
         {
             get => NormalText.fontStyle;

@@ -373,6 +373,19 @@
             Called before MelonMods are loaded from the Mods folder.
             </summary>
         </member>
+        <member name="P:MelonLoader.MelonLaunchOptions.ExternalArguments">
+            <summary>
+            Dictionary of all Arguments with value (if found) that were not used by MelonLoader
+            <para>
+            <b>Key</b> is the argument, <b>Value</b> is the value for the argument, <c>null</c> if not found
+            </para>
+            </summary>
+        </member>
+        <member name="P:MelonLoader.MelonLaunchOptions.CommandLineArgs">
+            <summary>
+            Array of All Command Line Arguments
+            </summary>
+        </member>
         <member name="F:MelonLoader.MelonAssembly.OnAssemblyResolving">
             <summary>
             Called before a process of resolving Melons from a MelonAssembly has started.

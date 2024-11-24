@@ -32,17 +32,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Classes\CanvasCreator.cs" />
-    <Compile Include="Classes\LoadedModsCanvasManager.cs" />
-    <Compile Include="Classes\ShadowedTextCreator.cs" />
+    <Compile Include="Classes\UI\CanvasCreator.cs" />
+    <Compile Include="Classes\UI\CustomFontsManager.cs" />
+    <Compile Include="Classes\NewtonsoftJsonIntegration\CustomJsonSerializerSettings.cs" />
+    <Compile Include="Classes\NewtonsoftJsonIntegration\IgnorePropertiesResolver.cs" />
+    <Compile Include="Classes\AssetsManagement\ModAssetsManager.cs" />
+    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Classes\UnityExplorerIntegration.cs" />
+    <Compile Include="Components\MouseBlocker.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="System\Index.cs" />
+    <Compile Include="Classes\UI\LoadedModsCanvasManager.cs" />
+    <Compile Include="Classes\ANSIColors.cs" />
+    <Compile Include="Classes\UI\ShadowedTextCreator.cs" />
     <Compile Include="Components\ShadowedTextSupporter.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
     <Compile Include="Extensions\MelonModExtensions.cs" />
     <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StackTraceExtensions.cs" />
     <Compile Include="Extensions\TransformExtensions.cs" />
     <Compile Include="Classes\Main.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
     <Compile Include="Patches\MainMenu_BtnPatches.cs" />
     <Compile Include="Patches\UIMgrPatches.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\Range.cs" />
+    <Compile Include="System\Runtime\CompilerServices\RuntimeHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="0Harmony">
@@ -66,6 +81,10 @@
     <Reference Include="MelonLoader">
       <HintPath>..\..\MelonLoader\net35\MelonLoader.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MelonLoader\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>..\..\MelonLoader\Il2CppAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
@@ -77,6 +96,9 @@
     </Reference>
     <Reference Include="UnityEngine">
       <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.CoreModule.dll</HintPath>
@@ -93,6 +115,14 @@
     <Reference Include="UnityEngine.LocalizationModule">
       <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.LocalizationModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -100,5 +130,6 @@
       <HintPath>..\..\MelonLoader\Il2CppAssemblies\UnityEngine.UIModule.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

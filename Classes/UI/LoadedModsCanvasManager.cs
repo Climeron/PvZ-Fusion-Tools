@@ -1,10 +1,11 @@
 ﻿using ClimeronToolsForPvZ.Components;
+using ClimeronToolsForPvZ.Classes.AssetsManagement;
 using ClimeronToolsForPvZ.Extensions;
 using Il2CppTMPro;
 using MelonLoader;
 using UnityEngine;
 
-namespace ClimeronToolsForPvZ.Classes
+namespace ClimeronToolsForPvZ.Classes.UI
 {
     public static class LoadedModsCanvasManager
     {
@@ -19,20 +20,22 @@ namespace ClimeronToolsForPvZ.Classes
             ShadowedTextSupporter = ShadowedTextCreator.CreateText(_LOADED_MODS_TEXT_NAME, LoadedModsCanvas.transform);
             ShadowedTextRectTransform = ShadowedTextSupporter.GetComponent<RectTransform>();
             ShadowedTextSupporter.Text = "Loaded mods:";
-            ShadowedTextSupporter.Size = 26;
-            ShadowedTextSupporter.Color = Color.gray;
+            ShadowedTextSupporter.Size = 22;
+            ShadowedTextSupporter.Color = Color.cyan;
             ShadowedTextSupporter.Alignment = TextAlignmentOptions.TopRight;
+            ShadowedTextSupporter.Font = ModAssetsManager.LoadedModsTextFont;
             ShadowedTextSupporter.FontStyle = FontStyles.Bold;
             ShadowedTextSupporter.ShadowOffsetX = 2;
-            ShadowedTextSupporter.ShadowOffsetY = -1;
+            ShadowedTextSupporter.ShadowOffsetY = -2;
             ShadowedTextSupporter.WordWrapping = false;
-            ShadowedTextSupporter.OutlineWidth = 0.3f;
+            ShadowedTextSupporter.Font.material.EnableKeyword("OUTLINE_ON");
+            ShadowedTextSupporter.OutlineWidth = 0.4f;
             ShadowedTextRectTransform.anchorMin = Vector2.one;
             ShadowedTextRectTransform.anchorMax = Vector2.one;
             ShadowedTextRectTransform.pivot = Vector2.one;
             ShadowedTextRectTransform.offsetMin = Vector3.zero;
             ShadowedTextRectTransform.offsetMax = Vector3.zero;
-            ShadowedTextRectTransform.anchoredPosition = new(-20, 0);
+            ShadowedTextRectTransform.anchoredPosition = new(-10, -20);
         }
         internal static void AddModsInfoToText()
         {

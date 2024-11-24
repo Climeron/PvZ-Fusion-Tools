@@ -1,4 +1,4 @@
-﻿using ClimeronToolsForPvZ.Classes;
+﻿using ClimeronToolsForPvZ.Classes.UI;
 using HarmonyLib;
 using Il2Cpp;
 
@@ -9,7 +9,7 @@ namespace ClimeronToolsForPvZ.Patches
     {
         [HarmonyPatch(nameof(MainMenu_Btn.OnMouseUp))]
         [HarmonyPostfix]
-        private static void PostUpdate(MainMenu_Btn __instance)
+        private static void PostOnMouseUp(MainMenu_Btn __instance)
         {
             switch (__instance.buttonNumber)
             {

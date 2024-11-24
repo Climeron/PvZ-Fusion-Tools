@@ -1,7 +1,7 @@
 ﻿using ClimeronToolsForPvZ.Components;
 using UnityEngine;
 
-namespace ClimeronToolsForPvZ.Classes
+namespace ClimeronToolsForPvZ.Classes.UI
 {
     public static class ShadowedTextCreator
     {
