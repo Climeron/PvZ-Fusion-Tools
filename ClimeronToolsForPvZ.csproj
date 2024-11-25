@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Classes\BuiltInGameEnums.cs" />
     <Compile Include="Classes\UI\CanvasCreator.cs" />
     <Compile Include="Classes\UI\CustomFontsManager.cs" />
     <Compile Include="Classes\NewtonsoftJsonIntegration\CustomJsonSerializerSettings.cs" />

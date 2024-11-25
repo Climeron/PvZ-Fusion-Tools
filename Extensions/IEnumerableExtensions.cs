@@ -8,6 +8,16 @@ namespace ClimeronToolsForPvZ.Extensions
 {
     public static class IEnumerableExtensions
     {
+        /// <summary>Аналог ForEach (System.Collections.Generic) для работы с коллекциями любого типа.</summary>
+        /// <typeparam name="TSource">Тип элементов source.</typeparam>
+        /// <param name="source">Последовательность значений, для которых вызывается действие.</param>
+        /// <param name="action">Делегат Action«TSource», выполняемый для каждого элемента коллекции IEnumerable«TSource».</param>
+        /// <returns>Исходная коллекция.</returns>
+        public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
+        {
+            foreach (TSource item in source)
+                action(item);
+        }
         /// <summary>Аналог ForEach (System.Collections.Generic) с возвратом исходной коллекции.</summary>
         /// <typeparam name="TSource">Тип элементов source.</typeparam>
         /// <param name="source">Последовательность значений, для которых вызывается действие.</param>
