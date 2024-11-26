@@ -1,5 +1,7 @@
-﻿using Il2CppTMPro;
+﻿using Il2CppSystem.Text.RegularExpressions;
+using Il2CppTMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace ClimeronToolsForPvZ.Components
 {
@@ -8,6 +10,12 @@ namespace ClimeronToolsForPvZ.Components
         public enum TextType { Normal, Shadow }
         public Canvas Canvas { get; private set; }
         public RectTransform RectTransform { get; private set; }
+        public Image PivotImage { get; set; }
+        public bool ShowPivot
+        {
+            get => PivotImage.gameObject.activeSelf;
+            set => PivotImage.gameObject.SetActive(value);
+        }
         public TextMeshProUGUI NormalText { get; private set; }
         public TextMeshProUGUI ShadowText { get; private set; }
         public string Name
@@ -20,13 +28,31 @@ namespace ClimeronToolsForPvZ.Components
                 ShadowText.name = $"{value}Shadow";
             }
         }
+        public Vector3 Position
+        {
+            get => NormalText.transform.position;
+            set
+            {
+                NormalText.transform.position = value;
+                ShadowText.transform.position = value + new Vector3(ShadowOffsetX, ShadowOffsetY, 0);
+            }
+        }
+        public Vector3 LocalPosition
+        {
+            get => NormalText.transform.localPosition;
+            set
+            {
+                NormalText.transform.localPosition = value;
+                ShadowText.transform.localPosition = value + new Vector3(ShadowOffsetX, ShadowOffsetY, 0);
+            }
+        }
         public string Text
         {
             get => NormalText.text;
             set
             {
                 NormalText.text = value;
-                ShadowText.text = value;
+                ShadowText.text = Regex.Replace(value, @"<color=#([0-9a-fA-F]{8})>(.*?)<\/color>", "$2");
             }
         }
         public float Size
@@ -126,6 +152,17 @@ namespace ClimeronToolsForPvZ.Components
             Canvas.sortingOrder = 1;
             Canvas.sortingLayerID = -1823021693;
             Canvas.sortingLayerName = "UI";
+            CreatePivotImage();
+        }
+        private void CreatePivotImage()
+        {
+            PivotImage = new GameObject(nameof(PivotImage)).AddComponent<Image>();
+            PivotImage.color = Color.white;
+            RectTransform pivotRectTransform = PivotImage.gameObject.GetComponent<RectTransform>();
+            pivotRectTransform.SetParent(Canvas.transform);
+            pivotRectTransform.sizeDelta = new(10, 10);
+            pivotRectTransform.localPosition = Vector3.zero;
+            ShowPivot = false;
         }
         private TextMeshProUGUI CreateText(TextType textType)
         {

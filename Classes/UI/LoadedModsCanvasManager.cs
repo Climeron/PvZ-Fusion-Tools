@@ -16,26 +16,26 @@ namespace ClimeronToolsForPvZ.Classes.UI
         public static RectTransform ShadowedTextRectTransform { get; private set; }
         internal static void CreateLoadedModsText()
         {
+            HideLogo();
             LoadedModsCanvas = CanvasCreator.CreateCanvasIfNotExisted(_LOADED_MODS_CANVAS_NAME);
             ShadowedTextSupporter = ShadowedTextCreator.CreateText(_LOADED_MODS_TEXT_NAME, LoadedModsCanvas.transform);
-            ShadowedTextRectTransform = ShadowedTextSupporter.GetComponent<RectTransform>();
-            ShadowedTextSupporter.Text = "Loaded mods:";
-            ShadowedTextSupporter.Size = 22;
+            ShadowedTextSupporter.Text = "<color=#00AAAAFF>Loaded mods:</color>";
             ShadowedTextSupporter.Color = Color.cyan;
-            ShadowedTextSupporter.Alignment = TextAlignmentOptions.TopRight;
+            ShadowedTextSupporter.AutoSize = true;
+            ShadowedTextSupporter.Alignment = TextAlignmentOptions.BottomLeft;
             ShadowedTextSupporter.Font = ModAssetsManager.LoadedModsTextFont;
             ShadowedTextSupporter.FontStyle = FontStyles.Bold;
             ShadowedTextSupporter.ShadowOffsetX = 2;
             ShadowedTextSupporter.ShadowOffsetY = -2;
-            ShadowedTextSupporter.WordWrapping = false;
             ShadowedTextSupporter.Font.material.EnableKeyword("OUTLINE_ON");
             ShadowedTextSupporter.OutlineWidth = 0.4f;
-            ShadowedTextRectTransform.anchorMin = Vector2.one;
-            ShadowedTextRectTransform.anchorMax = Vector2.one;
-            ShadowedTextRectTransform.pivot = Vector2.one;
-            ShadowedTextRectTransform.offsetMin = Vector3.zero;
-            ShadowedTextRectTransform.offsetMax = Vector3.zero;
-            ShadowedTextRectTransform.anchoredPosition = new(-10, -20);
+            ShadowedTextSupporter.WordWrapping = false;
+            ShadowedTextRectTransform = ShadowedTextSupporter.GetComponent<RectTransform>();
+            ShadowedTextRectTransform.anchorMin = new(0, 0);
+            ShadowedTextRectTransform.anchorMax = new(0, 0);
+            ShadowedTextRectTransform.offsetMin = Vector2.zero;
+            ShadowedTextRectTransform.offsetMax = Vector2.zero;
+            ShadowedTextRectTransform.position = new(10, 10, 0);
         }
         internal static void AddModsInfoToText()
         {
@@ -48,6 +48,12 @@ namespace ClimeronToolsForPvZ.Classes.UI
         {
             if (LoadedModsCanvas)
                 Object.Destroy(LoadedModsCanvas.gameObject);
+        }
+        private static void HideLogo()
+        {
+            GameObject logo = GameObject.Find("MainMenuCanvas/MainMenuFHD/Leaves/Logo");
+            if (logo)
+                logo.SetActive(false);
         }
     }
 }

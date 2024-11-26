@@ -13,11 +13,11 @@ namespace ClimeronToolsForPvZ
     {
         public static Main Instance { get; private set; }
         public Settings Settings { get; private set; }
-        private readonly bool _debug;
+        public bool Debug { get; set; }
 
         public override void OnGUI()
         {
-            if (!_debug)
+            if (!Debug)
                 return;
             GUIStyle debugStyle = GUI.skin.label;
             debugStyle.fontSize = 32;
