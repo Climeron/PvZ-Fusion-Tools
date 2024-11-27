@@ -11,8 +11,7 @@ namespace ClimeronToolsForPvZ.Patches
         [HarmonyPostfix]
         public static void PostEnterMainMenu(UIMgr __instance)
         {
-            LoadedModsCanvasManager.CreateLoadedModsText();
-            LoadedModsCanvasManager.AddModsInfoToText();
+            MainMenuCanvasManager.InitializeCanvas();
         }
     }
 }

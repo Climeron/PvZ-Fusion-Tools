@@ -9,7 +9,7 @@ namespace ClimeronToolsForPvZ.Classes
     public class Settings : Il2CppSystem.Object
     {
         #region Serializable
-        public string loadedModsTextFont;
+        public string mainTextFont;
         #endregion
         public const string SETTINGS_FILE_NAME = "Settings.json";
         public static string SettingsFilePath => Path.Combine(ModAssetsManager.ModAssetsFolderPath, SETTINGS_FILE_NAME);

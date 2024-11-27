@@ -43,7 +43,7 @@
     <Compile Include="Components\MouseBlocker.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="System\Index.cs" />
-    <Compile Include="Classes\UI\LoadedModsCanvasManager.cs" />
+    <Compile Include="Classes\UI\MainMenuCanvasManager.cs" />
     <Compile Include="Classes\ANSIColors.cs" />
     <Compile Include="Classes\UI\ShadowedTextCreator.cs" />
     <Compile Include="Components\ShadowedTextSupporter.cs" />

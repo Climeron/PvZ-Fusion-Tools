@@ -147,11 +147,11 @@ namespace ClimeronToolsForPvZ.Components
         private void InitializeCanvas()
         {
             Canvas = GetComponent<Canvas>() ?? gameObject.AddComponent<Canvas>();
+            Canvas.gameObject.layer = LayerMask.NameToLayer("UI");
             Canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             Canvas.overrideSorting = true;
-            Canvas.sortingOrder = 1;
-            Canvas.sortingLayerID = -1823021693;
             Canvas.sortingLayerName = "UI";
+            Canvas.sortingOrder = 1;
             CreatePivotImage();
         }
         private void CreatePivotImage()

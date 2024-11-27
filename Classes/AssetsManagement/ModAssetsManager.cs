@@ -14,7 +14,7 @@ namespace ClimeronToolsForPvZ.Classes.AssetsManagement
         public const string FONTS_FOLDER_NAME = "Fonts";
 
         #region Assets
-        public static TMP_FontAsset LoadedModsTextFont { get; private set; }
+        public static TMP_FontAsset MainTextFont { get; private set; }
         #endregion
 
         public static void Initialize()
@@ -23,9 +23,9 @@ namespace ClimeronToolsForPvZ.Classes.AssetsManagement
         }
         public static void LoadAssets(Settings settings)
         {
-            LoadedModsTextFont = LoadTMPFont(settings.loadedModsTextFont, false);
-            if (!LoadedModsTextFont)
-                $"The font '{settings.loadedModsTextFont}' specified in the settings file could not be found. A standard font has been loaded.".PrintWarning();
+            MainTextFont = LoadTMPFont(settings.mainTextFont, false);
+            if (!MainTextFont)
+                $"The font '{settings.mainTextFont}' specified in the settings file could not be found. A standard font has been loaded.".PrintWarning();
         }
         #region Fonts
         public static string FontsFolderPath => Path.Combine(ModAssetsFolderPath, FONTS_FOLDER_NAME);
