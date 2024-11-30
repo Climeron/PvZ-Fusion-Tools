@@ -15,7 +15,7 @@ namespace ClimeronToolsForPvZ.Patches
             {
                 case int n when n >= 0 && n <= 6:
                 case 11:
-                    MainMenuCanvasManager.DestroyCanvas();
+                    MainMenuCanvasManager.Destroy();
                     break;
             }
         }

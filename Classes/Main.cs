@@ -2,6 +2,7 @@
 using System.Text;
 using ClimeronToolsForPvZ.Classes;
 using ClimeronToolsForPvZ.Classes.AssetsManagement;
+using ClimeronToolsForPvZ.Classes.UI;
 using ClimeronToolsForPvZ.Components;
 using Il2CppInterop.Runtime.Injection;
 using MelonLoader;
@@ -45,8 +46,9 @@ namespace ClimeronToolsForPvZ
         private void RegisterComponents()
         {
             ClassInjector.RegisterTypeInIl2Cpp<Settings>();
-            ClassInjector.RegisterTypeInIl2Cpp<MouseBlocker>();
             ClassInjector.RegisterTypeInIl2Cpp<ShadowedTextSupporter>();
+            ClassInjector.RegisterTypeInIl2Cpp<MainMenuCanvasManager>();
+            ClassInjector.RegisterTypeInIl2Cpp<MouseBlocker>();
         }
     }
 }

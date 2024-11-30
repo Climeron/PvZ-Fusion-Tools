@@ -42,7 +42,7 @@ namespace ClimeronToolsForPvZ
     public static class AssemblyInfo
     {
         public const string MODE_NAME = nameof(ClimeronToolsForPvZ);
-        public const string VERSION = "214.0.0";
+        public const string VERSION = "214.0.1";
         public const string AUTHOR = "Climeron";
     }
 }
