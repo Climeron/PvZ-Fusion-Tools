@@ -16,10 +16,9 @@ namespace ClimeronToolsForPvZ.Classes.UI
             {
                 GameObject gObject = new(canvasName);
                 canvasTransform = gObject.transform;
-                gObject.transform.SetParent(parent);
+                canvasTransform.SetParent(parent);
             }
             Canvas canvas = canvasTransform.GetComponent<Canvas>() ?? canvasTransform.gameObject.AddComponent<Canvas>();
-            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             return canvas;
         }
     }
