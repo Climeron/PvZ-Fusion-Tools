@@ -4,6 +4,8 @@ using ClimeronToolsForPvZ.Extensions;
 using Il2CppTMPro;
 using MelonLoader;
 using UnityEngine;
+using Il2Cpp;
+using System;
 
 namespace ClimeronToolsForPvZ.Classes.UI
 {
@@ -21,13 +23,19 @@ namespace ClimeronToolsForPvZ.Classes.UI
         public RectTransform GameTextRectTransform { get; private set; }
         public RectTransform LoadedModsTextRectTransform { get; private set; }
 
-        private void Update() => UpdateSupportersScale();
         private void OnDestroy() => Instance = null;
         internal static void InitializeCanvas()
         {
-            HideLogo();
-            Instance = CanvasCreator.CreateCanvasIfNotExisted(_MAIN_MENU_CANVAS_NAME)
+            Transform leaves = GameAPP.mainMenuCanvas.transform.Find("MainMenuFHD/Leaves");
+            if (!leaves)
+            {
+                "Unable to position mod text.".PrintError<NullReferenceException>();
+                return;
+            }
+            Instance = CanvasCreator.CreateCanvasIfNotExisted(_MAIN_MENU_CANVAS_NAME, leaves)
                 .gameObject.AddComponent<MainMenuCanvasManager>();
+            Instance.transform.localScale = Vector3.one;
+            Instance.transform.localPosition = Vector3.zero;
             Instance.Canvas = Instance.GetComponent<Canvas>();
             Instance.CreateGameText();
             Instance.CreateLoadedModsText();
@@ -37,43 +45,45 @@ namespace ClimeronToolsForPvZ.Classes.UI
         {
             GameTextSupporterComponent = ShadowedTextCreator.CreateText(_GAME_TEXT_NAME, Canvas.transform);
             GameTextSupporter.Text = $"<color=#A1D460FF>Plants</color> <color=#D3D5CBFF>vs</color> <color=#818D73FF>Zombies</color> <color=#20C9FAFF>Fusion v{MelonLoader.InternalUtils.UnityInformationHandler.GameVersion}</color>";
-            GameTextSupporter.Size = 34;
+            GameTextSupporter.Size = 28;
             GameTextSupporter.Color = Color.cyan;
             GameTextSupporter.Alignment = TextAlignmentOptions.BottomLeft;
             GameTextSupporter.Font = ModAssetsManager.MainTextFont;
             GameTextSupporter.FontStyle = FontStyles.Italic | FontStyles.SmallCaps | FontStyles.Bold;
-            GameTextSupporter.ShadowOffsetX = 3;
-            GameTextSupporter.ShadowOffsetY = -3;
+            GameTextSupporter.ShadowOffsetX = 2;
+            GameTextSupporter.ShadowOffsetY = -2;
             GameTextSupporter.Font.material.EnableKeyword("OUTLINE_ON");
             GameTextSupporter.OutlineWidth = 0.3f;
             GameTextSupporter.WordWrapping = false;
             GameTextRectTransform = GameTextSupporter.GetComponent<RectTransform>();
-            GameTextRectTransform.anchorMin = new(0, 0);
-            GameTextRectTransform.anchorMax = new(0, 0);
+            GameTextRectTransform.localScale = Vector3.one;
+            GameTextRectTransform.anchorMin = Vector2.zero;
+            GameTextRectTransform.anchorMax = Vector2.zero;
             GameTextRectTransform.offsetMin = Vector2.zero;
             GameTextRectTransform.offsetMax = Vector2.zero;
-            GameTextRectTransform.position = new(10, 10, 0);
+            GameTextRectTransform.localPosition = new(-510, -300, 0);
         }
         internal void CreateLoadedModsText()
         {
             LoadedModsTextSupporterComponent = ShadowedTextCreator.CreateText(_LOADED_MODS_TEXT_NAME, Canvas.transform);
             LoadedModsTextSupporter.Text = "<color=#00AAAAFF>Loaded mods:</color>";
-            LoadedModsTextSupporter.Size = 20;
+            LoadedModsTextSupporter.Size = 12;
             LoadedModsTextSupporter.Color = Color.cyan;
             LoadedModsTextSupporter.Alignment = TextAlignmentOptions.BottomLeft;
             LoadedModsTextSupporter.Font = ModAssetsManager.MainTextFont;
             LoadedModsTextSupporter.FontStyle = FontStyles.Bold;
-            LoadedModsTextSupporter.ShadowOffsetX = 2;
-            LoadedModsTextSupporter.ShadowOffsetY = -2;
+            LoadedModsTextSupporter.ShadowOffsetX = 1.5f;
+            LoadedModsTextSupporter.ShadowOffsetY = -1f;
             LoadedModsTextSupporter.Font.material.EnableKeyword("OUTLINE_ON");
             LoadedModsTextSupporter.OutlineWidth = 0.4f;
             LoadedModsTextSupporter.WordWrapping = false;
             LoadedModsTextRectTransform = LoadedModsTextSupporter.GetComponent<RectTransform>();
-            LoadedModsTextRectTransform.anchorMin = new(0, 0);
-            LoadedModsTextRectTransform.anchorMax = new(0, 0);
+            LoadedModsTextRectTransform.localScale = Vector3.one;
+            LoadedModsTextRectTransform.anchorMin = Vector2.zero;
+            LoadedModsTextRectTransform.anchorMax = Vector2.zero;
             LoadedModsTextRectTransform.offsetMin = Vector2.zero;
             LoadedModsTextRectTransform.offsetMax = Vector2.zero;
-            LoadedModsTextRectTransform.position = new(10, 55, 0);
+            LoadedModsTextRectTransform.localPosition = new(-510, -140, 0);
         }
         internal void AddModsInfoToText()
         {
@@ -82,27 +92,10 @@ namespace ClimeronToolsForPvZ.Classes.UI
             foreach (MelonMod mod in MelonMod.RegisteredMelons)
                 LoadedModsTextSupporter.Text += $"\n{mod.ToInfoString()}";
         }
-        private void UpdateSupportersScale()
-        {
-            float scaleFactor = (float)(Screen.height + 150) / 1080;
-            if (GameTextSupporter)
-                GameTextSupporter.transform.localScale = new(scaleFactor, scaleFactor, 1);
-            if (LoadedModsTextSupporter)
-            {
-                LoadedModsTextSupporter.transform.position = new(10, 10 + scaleFactor * 35, 0);
-                LoadedModsTextSupporter.transform.localScale = new(scaleFactor, scaleFactor, 1);
-            }
-        }
         internal static void Destroy()
         {
             if (Instance)
                 Destroy(Instance.gameObject);
-        }
-        private static void HideLogo()
-        {
-            GameObject logo = GameObject.Find("MainMenuCanvas/MainMenuFHD/Leaves/Logo");
-            if (logo)
-                logo.SetActive(false);
         }
     }
 }

@@ -34,7 +34,8 @@ namespace ClimeronToolsForPvZ
         }
         public override void OnInitializeMelon()
         {
-            Console.OutputEncoding = Encoding.UTF8;
+            if (!Console.IsOutputRedirected)
+                Console.OutputEncoding = Encoding.UTF8;
             RegisterComponents();
             Instance = this;
             ModAssetsManager.Initialize();

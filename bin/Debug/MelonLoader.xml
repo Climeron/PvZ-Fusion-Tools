@@ -203,6 +203,11 @@
             Specified Version Patch.
             </summary>
         </member>
+        <member name="P:MelonLoader.VerifyLoaderVersionAttribute.Prerelease">
+            <summary>
+            Specified Version Prerelease.
+            </summary>
+        </member>
         <member name="P:MelonLoader.VerifyLoaderVersionAttribute.IsMinimum">
             <summary>
             If Version Specified is a Minimum.
