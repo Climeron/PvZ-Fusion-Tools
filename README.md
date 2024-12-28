@@ -19,7 +19,8 @@
 3. Скачайте [архив](https://github.com/Climeron/PvZ-Fusion-Tools/releases) (ClimeronToolsForPvZ.zip) для вашей версии PvZ.
 4. Извлеките файлы в папку Mods в каталоге игры.
 5. Веселитесь, играя в игру.
-6. 
+
+
 # EN
 # ClimeronToolsForPvZ
 The core for my mods for PvZ Fusion.<br/>
