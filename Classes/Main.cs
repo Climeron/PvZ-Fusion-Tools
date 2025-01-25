@@ -2,8 +2,10 @@
 using System.Text;
 using ClimeronToolsForPvZ.Classes;
 using ClimeronToolsForPvZ.Classes.AssetsManagement;
+using ClimeronToolsForPvZ.Classes.PrefabsEditors;
 using ClimeronToolsForPvZ.Classes.UI;
 using ClimeronToolsForPvZ.Components;
+using ClimeronToolsForPvZ.Extensions;
 using Il2CppInterop.Runtime.Injection;
 using MelonLoader;
 using UnityEngine;
@@ -41,6 +43,7 @@ namespace ClimeronToolsForPvZ
             ModAssetsManager.Initialize();
             Settings = Settings.Load();
             ModAssetsManager.LoadAssets(Settings);
+            MainMenuFHDPrefabEditor.ApplyEdits();
             UnityExplorerIntegration.Initialize();
             MouseBlocker.Initialize();
         }
@@ -49,6 +52,7 @@ namespace ClimeronToolsForPvZ
             ClassInjector.RegisterTypeInIl2Cpp<Settings>();
             ClassInjector.RegisterTypeInIl2Cpp<ShadowedTextSupporter>();
             ClassInjector.RegisterTypeInIl2Cpp<MainMenuCanvasManager>();
+            ClassInjector.RegisterTypeInIl2Cpp<MainMenuFHDTracker>();
             ClassInjector.RegisterTypeInIl2Cpp<MouseBlocker>();
         }
     }

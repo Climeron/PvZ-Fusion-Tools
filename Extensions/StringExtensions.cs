@@ -77,5 +77,18 @@ namespace ClimeronToolsForPvZ.Extensions
             }
             return path;
         }
+        /// <summary>Возвращает путь от указанной папки, вырезая его из указанного пути.</summary>
+        /// <param name="path">Путь до целевого файла.</param>
+        /// <param name="folderName">Папка, от которой нужно вернуть путь.</param>
+        public static string FromFolder(this string path, string folderName, bool withExtension = true)
+        {
+            List<string> partsList = path.Split(new[] { '/', '\\' }).ToList();
+            int index = partsList.FindLastIndex(x => x == folderName);
+            if (index == -1)
+                return path;
+            partsList.RemoveRange(0, index + 1);
+            partsList[^1] = withExtension ? Path.GetFileName(path) : Path.GetFileNameWithoutExtension(path);
+            return partsList.Join("/");
+        }
     }
 }

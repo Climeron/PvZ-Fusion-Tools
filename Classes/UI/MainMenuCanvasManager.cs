@@ -26,7 +26,7 @@ namespace ClimeronToolsForPvZ.Classes.UI
         private void OnDestroy() => Instance = null;
         internal static void InitializeCanvas()
         {
-            Transform leaves = GameAPP.mainMenuCanvas.transform.Find("MainMenuFHD/Leaves");
+            Transform leaves = GameAPP.TravelMenu ? GameAPP.mainMenuCanvas.transform.Find("MainMenuFHD2/Leaves") : GameAPP.mainMenuCanvas.transform.Find("MainMenuFHD/Leaves");
             if (!leaves)
             {
                 "Unable to position mod text.".PrintError<NullReferenceException>();
